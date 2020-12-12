@@ -1,0 +1,4 @@
+enum SearchError {
+  notFound,
+  invalid,
+}
