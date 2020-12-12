@@ -25,7 +25,7 @@ class GeneralSearchNews implements SearchNews {
       parsedValue = stringParser(searchText);
     }
 
-    var response = await httpClient.get('http://newsapi.org/v2/everything?q=$parsedValue&apiKey=a09f7b6a94824149a0fa562779cdd201');
+    final response = await httpClient.get('http://newsapi.org/v2/everything?q=$parsedValue&apiKey=a09f7b6a94824149a0fa562779cdd201');
 
     return GeneralNewsModel.fromJson(response).toEntityList();
   }

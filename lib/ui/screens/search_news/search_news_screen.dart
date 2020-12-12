@@ -40,18 +40,15 @@ class SearchNewsScreen extends StatelessWidget {
                   }
 
                   if (presenter.news == null || presenter.news.isEmpty) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.remove_red_eye_outlined),
-                            Text('Nada para ver aqui'),
-                          ],
-                        ),
-                        Text('Use a barra de pesquisa para buscar notícias')
-                      ],
+                    return Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Nada para ver aqui'),
+                          SizedBox(width: 4),
+                          Icon(Icons.remove_red_eye_outlined),
+                        ],
+                      ),
                     );
                   }
 

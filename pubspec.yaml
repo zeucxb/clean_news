@@ -16,6 +16,7 @@ dependencies:
   mobx:
   flutter_mobx:
   url_launcher:
+  equatable:
 
 dev_dependencies:
   flutter_test:

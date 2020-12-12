@@ -21,7 +21,7 @@ class App extends StatelessWidget {
       routes: {
         '/news': (_) => SearchNewsScreen(
               SearchNewsStore(
-                GeneralSearchNews(
+                GovSearchNews(
                   HttpAdapter(
                     Client(),
                   ),
