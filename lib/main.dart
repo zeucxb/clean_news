@@ -7,6 +7,8 @@ import 'package:news/infra/http/http.dart';
 import 'package:news/presentation/search_news_store.dart';
 import 'package:news/ui/screens/search_news/search_news_screen.dart';
 
+import 'data/usecases/search_news_compose.dart';
+
 void main() {
   runApp(App());
 }
@@ -19,17 +21,27 @@ class App extends StatelessWidget {
       theme: ThemeData.dark(),
       initialRoute: '/news',
       routes: {
-        '/news': (_) => SearchNewsScreen(
-              SearchNewsStore(
-                GeneralSearchNews(
-                  HttpAdapter(
-                    Client(),
+        '/news': (_) {
+          final httpClient = HttpAdapter(
+            Client(),
+          );
+
+          return SearchNewsScreen(
+            SearchNewsStore(
+              SearchNewsCompose(
+                httpClient,
+                [
+                  GovSearchNews(httpClient),
+                  GeneralSearchNews(
+                    httpClient,
+                    stringParser: UrlParamsParser(),
+                    validator: StringValidator(),
                   ),
-                  stringParser: UrlParamsParser(),
-                  // validator: StringValidator(),
-                ),
+                ],
               ),
             ),
+          );
+        },
       },
     );
   }
